@@ -1,0 +1,62 @@
+一、参考文献著录格式
+1 、期刊作者．题名〔J〕．刊名，出版年，卷(期)∶起止页码
+2、 专著作者．书名〔M〕．版本(第一版不著录)．出版地∶出版者，出版年∶起止页码
+3、 论文集作者．题名〔C〕．编者．论文集名，出版地∶出版者，出版年∶起止页码
+4 、学位论文作者．题名〔D〕．保存地点．保存单位．年份
+5 、专利文献题名〔P〕．国别．专利文献种类．专利号．出版日期
+6、 标准编号．标准名称〔S〕
+7、 报纸作者．题名〔N〕．报纸名．出版日期(版次)
+8 、报告作者．题名〔R〕．保存地点．年份
+9 、电子文献作者．题名〔电子文献及载体类型标识〕．文献出处，日期
+二、文献类型及其标识
+1、根据GB3469 规定，各类常用文献标识如下：
+①期刊〔J〕
+②专著〔M〕
+③论文集〔C〕
+④学位论文〔D〕
+⑤专利〔P〕
+⑥标准〔S〕
+⑦报纸〔N〕
+⑧技术报告〔R〕
+2、电子文献载体类型用双字母标识，具体如下：
+①磁带〔MT〕
+②磁盘〔DK〕
+③光盘〔CD〕
+④联机网络〔OL〕
+3、电子文献载体类型的参考文献类型标识方法为：〔文献类型标识/载体类型标识〕。例如：
+①联机网上数据库〔DB/OL〕
+②磁带数据库〔DB/MT〕
+③光盘图书〔M/CD〕
+④磁盘软件〔CP/DK〕
+⑤网上期刊〔J/OL〕
+⑥网上电子公告〔EB/OL〕
+三、举例
+1、期刊论文
+〔1〕周庆荣，张泽廷，朱美文，等．固体溶质在含夹带剂超临界流体中的溶解度〔J〕．化工学报，1995(3)：317—323
+〔2〕Dobbs J M, Wong J M. Modification of supercritical fluid phasebehavior using polor coselvent〔J〕. Ind Eng Chem Res, 1987,26:56
+〔3〕刘仲能，金文清.合成医药中间体4-甲基咪唑的研究〔J〕.精细化工，2002(2)：103-105
+〔4〕 Mesquita A C, Mori M N, Vieira J M, et al ． Vinyl acetate polymerization by ionizing radiation〔J〕．Radiation Physics and Chemistry,2002, 63:465
+2、专著
+〔1〕蒋挺大．亮聚糖〔M〕．北京：化学工业出版社，2001．127
+〔2〕Kortun G． Reflectance Spectroscopy〔M〕． New York: Spring-Verlag,1969
+3、论文集
+〔1〕郭宏，王熊，刘宗林．膜分离技术在大豆分离蛋白生产中综合利用的研究〔C〕．//余立新．第三届全国膜和膜过程学术报告会议论文集．北京：高教出版社，1999．421-425
+〔2〕Eiben A E, vander Hauw J K．Solving 3-SAT with adaptive genetic algorithms 〔C〕．//Proc 4th IEEE Conf Evolutionary Computation．Piscataway: IEEE Press, 1997．81-86
+4、学位论文
+〔1〕陈金梅．氟石膏生产早强快硬水泥的试验研究（D）．西安：西安建筑科学大学，2000
+〔 2 〕 Chrisstoffels L A J ． Carrier-facilitated transport as a mechanistic tool in supramolecular chemistry〔D〕．The Netherland：Twente University．1988
+5、专利文献
+〔1〕Hasegawa, Toshiyuki, Yoshida,et al．Paper Coating composition〔P〕．EP 0634524．1995-01-18
+〔 2 〕 仲前昌夫， 佐藤寿昭． 感光性树脂〔 P 〕． 日本， 特开平09-26667．1997-01-28
+〔3〕Yamaguchi K, Hayashi A．Plant growth promotor and productionthereof 〔P〕．Jpn, Jp1290606．
+1999-11-22
+〔4〕厦门大学．二烷氨基乙醇羧酸酯的制备方法〔P〕．中国发明专利，CN1073429．1993-06-23
+6、技术标准文献
+〔1〕ISO 1210-1982，塑料——小试样接触火焰法测定塑料燃烧性〔S〕
+〔2〕GB 2410-80，透明塑料透光率及雾度实验方法〔S〕
+7、报纸
+〔1〕陈志平．减灾设计研究新动态〔N〕．科技日报，1997-12-12(5)
+8、报告
+〔1〕中国机械工程学会．密相气力输送技术〔R〕．北京：1996
+9、电子文献
+〔1〕万锦柔．中国大学学报论文文摘(1983-1993)〔DB/CD〕．北京：中国百科全书出版社，1996

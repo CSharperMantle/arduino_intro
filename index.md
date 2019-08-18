@@ -96,7 +96,7 @@ Arduino 板是对于 ATmega/ARM 系列芯片的再封装，加入了 USB 控制�
 
 为了方便讨论，我们以 **Arduino/Genuino UNO Revision 3** 作为本 Chat 中默认使用的 Arduino 板，因为它是最早发布、最适合初学者学习的 Arduino 板型号。 **如果没有特殊声明，本 Chat 之后所提到的 Arduino 板均指 Arduino/Genuino UNO Revision 3。**
 
-### Arduino UNO 结构
+### 1.3 Arduino UNO 结构
 TODO
 
 ### 第1章参考资料

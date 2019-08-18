@@ -109,7 +109,7 @@ TODO
 ### 2.1 Arduino Sketch 基础结构
 一段能被烧录到 Arduino 板上并被执行的代码称为 **Arduino Sketch** [1]。一个最小的 Arduino Sketch 包含以下内容：
 ```c
-// sketching/minimal-sketch.c
+// sketching/minimal_sketch.c
 #include <Arduino.h>
 
 void setup()
@@ -143,7 +143,7 @@ while (1) // 死循环
 
 一般来说，我们只需要上述最小 Arduino Sketch 就可以完成大量工作。但是也可以有以下更高级的 Sketch，其支持使 Arduino 板在空闲与工作中切换,实现“软关机”。
 ```c
-// sketch/advanced-sketch.c
+// sketching/shutdownable_sketch.c
 #include <Arduino.h>
 
 bool isShutdownRequested = false;

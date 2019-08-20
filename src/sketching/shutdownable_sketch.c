@@ -12,7 +12,7 @@ void loop()
 {
     // 这里写要被一直执行的代码
 
-    if (isShutdownRequested) // 检查是否请求开机
+    if (isShutdownRequested) // 检查是否请求关机
     {
         while (1)
         {

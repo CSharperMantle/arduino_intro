@@ -150,8 +150,8 @@ TODO
 
 使用 Fritzing 绘制的电路图如下。
 
-![实物图]()
-![原理图]()
+![实物图](https://github.com/CSharperMantle/arduino_intro/blob/master/assets/blink_project/circuit_bb.png)
+![原理图](https://github.com/CSharperMantle/arduino_intro/blob/master/assets/blink_project/circuit_image.png)
 
 ### 3.2 软件设计
 TODO

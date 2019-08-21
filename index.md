@@ -31,7 +31,7 @@
 之后，使用不同芯片的 Arduino 被制造出来。2017年， Arduino 与 ARM Holdings 签署合作伙伴协议[3]，发布使用 ARM 构架的 Arduino 开发板 Arduino Yun 以及其他型号。
 
 ### 1.2 Arduino 板的结构及型号
-Arduino 板是对于 ATmega/ARM 系列芯片的再封装，加入了 USB 控制器、晶振、稳压器、编程接口等外围设备。根据所封装芯片型号以及用途不同，Arduino 板分为多个型号。如下的表格列出了部分官方发布的 Arduino 板的名称、处理器和尺寸等信息[4]。
+Arduino 板是对于 ATmega/ARM 等系列芯片的再封装，加入了 USB 控制器、晶振、稳压器、编程接口等外围设备。根据所封装芯片型号以及用途不同，Arduino 板分为多个型号。如下的表格列出了部分官方发布的 Arduino 板的名称、处理器和尺寸等信息[4]。
 
 <table>
     <thead>
@@ -54,7 +54,7 @@ Arduino 板是对于 ATmega/ARM 系列芯片的再封装，加入了 USB 控制�
             <td>16MHz, 400MHz</td>
         </tr>
         <tr>
-            <td>Arduino/Genuino UNO Revision 3</td>
+            <td>Arduino/Genuino Uno Revision 3</td>
             <td>ATmega328P</td>
             <td>68.6mm</td>
             <td>53.4mm</td>
@@ -62,7 +62,7 @@ Arduino 板是对于 ATmega/ARM 系列芯片的再封装，加入了 USB 控制�
             <td>16MHz</td>
         </tr>
         <tr>
-            <td>Arduino/Genuino MEGA 2560</td>
+            <td>Arduino/Genuino Mega 2560</td>
             <td>ATmega2560</td>
             <td>101.52mm</td>
             <td>53.3mm</td>
@@ -96,7 +96,7 @@ Arduino 板是对于 ATmega/ARM 系列芯片的再封装，加入了 USB 控制�
     </tbody>
 </table>
 
-为了方便讨论，我们以 **Arduino/Genuino UNO Revision 3** 作为本 Chat 中默认使用的 Arduino 板，因为它是最简单、最适合初学者学习的 Arduino 板型号。 **如果没有特殊声明，本 Chat 之后所提到的 Arduino 板均指 Arduino/Genuino UNO Revision 3。**
+为了方便讨论，我们以 **Arduino/Genuino Uno Revision 3** 作为本 Chat 中默认使用的 Arduino 板，因为它是最简单、最适合初学者学习的 Arduino 板型号。 **如果没有特殊声明，本 Chat 之后所提到的 Arduino 板均指 Arduino/Genuino Uno Revision 3。**
 
 > **旁注：Arduino 和 Genuino**
 
@@ -110,12 +110,19 @@ Arduino 板是对于 ATmega/ARM 系列芯片的再封装，加入了 USB 控制�
 4. *Wikipedia*. "List of Arduino boards and compatible systems"[DB/OL]. (https://en.wikipedia.org/wiki/List_of_Arduino_boards_and_compatible_systems), 访问日期 2019-08-17
 5. *Wikipedia*. "Arduino"[DB/OL]. (https://en.wikipedia.org/wiki/Arduino), 访问日期 2019-08-20
 
-## 第2章 Arduino UNO 基础知识
+## 第2章 Arduino Uno 基础知识
 ### 2.0 导语
-在本章中，我们将介绍关于 Arduino UNO 的有关知识，包括硬件构成以及所需要的软件。要注意，尽管这一章介绍的是 Arduino UNO，但是这些结论都是可以推广到其他 Arduino 板上的。当后面的讨论中提及本章概念时，我们将假设读者已经理解了它们。
+在本章中，我们将介绍关于 Arduino Uno 的有关知识，包括硬件构成以及所需要的软件。要注意，尽管这一章介绍的是 Arduino Uno，但是这些结论都是可以推广到其他 Arduino 板上的。当后面的讨论中提及本章概念时，我们将假设读者已经理解了它们。
 
 ### 2.1 硬件结构
-TODO
+正面
+![Arduino Uno R3 正面](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/uno_real_front.jpg)
+
+背面
+![Arduino Uno R3 背面](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/uno_real_back.jpg)
+
+示意图
+![Fritzing 中的 Arduino Uno R3](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/uno_bb.png)
 
 ### 2.2 软件需求
 #### 电路设计
@@ -146,7 +153,7 @@ TODO
 * 1个 电阻，约为200欧
 * 若干 线材
 
-我们将用 Arduino 板上的数字I/O端口`2`来控制 LED 灯。由于数字I/O端口可以输出 0V 和 5V 电压并且 LED 灯耗能极少，我们将直接使用它驱动灯管。综上所述，我们只需要**将 LED 灯和电阻串联接至数字I/O口`2`**即可。
+观察需求我们得知，我们的目标是间断开闭 LED 灯，其只有开、闭两状态，所以我们将用 Arduino 板上的数字I/O端口`2`来控制 LED 灯。由于数字I/O端口可以输出 0V 和 5V 电压并且 LED 灯耗能极少，我们将直接使用它驱动灯管。综上所述，我们只需要**将 LED 灯和电阻串联接至数字I/O口`2`**即可。
 
 使用 Fritzing 绘制的电路图如下。
 
@@ -154,7 +161,41 @@ TODO
 ![原理图](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/blink_project/circuit_image.png)
 
 ### 3.2 软件设计
-TODO
+有了硬件设计后，软件设计思路就呼之欲出了。让我们来审视一下需求，并将其转换为 Arduino 板上的操作。
+
+使一盏 LED 灯闪烁 => 使数字IO端口`2`以固定间隔输出 5V/0V => 一个脉冲输出
+
+于是，我们可以编写以下代码：
+```c
+// src/blink_project/sketch.c
+#include <Arduino.h>
+
+// 定义 LED 引脚
+#define PIN_LED 2
+// 定义间隔时间，以毫秒为单位
+#define TIME_DELAY_MILLISEC 1000
+
+void setup()
+{
+    // 设置数字IO口2为输出
+    pinMode(PIN_LED, OUTPUT);
+    // 初始状态为关闭
+    digitalWrite(PIN_LED, LOW);
+}
+
+void loop()
+{
+    // 输出高电平
+    digitalWrite(PIN_LED, HIGH);
+    // 等待
+    delay(TIME_DELAY_MILLISEC);
+    // 输出低电平
+    digitalWrite(PIN_LED, LOW);
+    // 等待
+    delay(TIME_DELAY_MILLISEC);
+}
+```
+将其编译上传，完成本项目制作。
 
 ###第三章参考资料
 1. *Wikipedia*. "Light-emitting diode"[DB/OL]. (https://en.wikipedia.org/wiki/Light-emitting_diode), 访问日期 2019-08-20

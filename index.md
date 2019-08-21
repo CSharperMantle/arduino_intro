@@ -112,16 +112,19 @@ Arduino 板是对于 ATmega/ARM 等系列芯片的再封装，加入了 USB 控�
 
 ## 第2章 Arduino Uno 基础知识
 ### 2.0 导语
-在本章中，我们将介绍关于 Arduino Uno 的有关知识，包括硬件构成以及所需要的软件。要注意，尽管这一章介绍的是 Arduino Uno，但是这些结论都是可以推广到其他 Arduino 板上的。当后面的讨论中提及本章概念时，我们将假设读者已经理解了它们。
+在本章中，我们将介绍关于 Arduino Uno 的有关知识，包括硬件构成以及编程所需要的软件。要注意，尽管这一章介绍的是 Arduino Uno，但是这些结论都是可以推广到其他 Arduino 板上的。当后面的讨论中提及本章概念时，我们将假设读者已经理解了它们。
 
 ### 2.1 硬件结构
-正面
+正面：
+
 ![Arduino Uno R3 正面](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/uno_real_front.jpg)
 
-背面
+背面：
+
 ![Arduino Uno R3 背面](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/uno_real_back.jpg)
 
-示意图
+示意图：
+
 ![Fritzing 中的 Arduino Uno R3](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/uno_bb.png)
 
 ### 2.2 软件需求

@@ -139,9 +139,14 @@ Arduino 板是对于 ATmega/ARM 等系列芯片的再封装，加入了 USB 控�
 
 * `TX0`：硬件 **串行端口** （Serial Port）的 **发送端** ，微控制器向串口写入的信息会出现在这里
 * `RX0`：硬件串行端口的 **接收端** ，电脑向串口写入的信息会出现在这里
-* `PWM`：意为 **脉冲带宽调制** （Pulse-Width Modulation），是通过数字口传输信号的重要方式
+* `PWM`：意为 **脉冲带宽调制** （Pulse-width Modulation），是通过数字口传输信号的重要方式
 * `GND`：接地口，同 `POWER` 区中的 `GND`
-* `AREF`：意为 **模拟输入参考** （Analogue input REFerence），定义了当模拟值为 `1023` 时的电压值。该引脚的使用将在之后详细讲解。
+* `AREF`：意为 **模拟输入参考** （Analogue Input Reference），定义了当模拟值为 `1023` 时的电压值。该引脚的使用将在之后详细讲解。
+
+> **旁注：数字信号与模拟信号**
+
+> 我们能用身体感受到的大多数信号都是模拟信号，比如光亮度。当我们使用肉眼估测几盏灯的亮度时，我们会说“灯 A 很亮”，“灯 B 比较暗”。这就是模拟信号的样例。如果我们使用专业仪器测量，我们能得到类似于 320 勒克斯、 413.12 勒克斯等数值。我们将这样的值称为 **连续值** （Continuous Value），因为类似于 12.32134 、 255.2531 和 999.999 都是合法的值，并没有一个最小的单位。由这样的量组成的信号称为 **数字信号** （Analogue Signal）。
+> 相反的，当我们试图描述一盏灯是否点亮时，我们能给出的答案只有“是”和“否”两种。现实中并没有类似“灯 A 开了 92.423%”，“灯 B 关了 54.239%”这样的陈述。这样的值被称为 **离散值** （Discrete Value）。由这样的值组成的信号成为 **数字信号** （Digital Signal）。现代计算机理论上使用数字信号作为信息载体，但在实际计算机实现中，数字信号承载于模拟信号（电压）上。同时，也可以做到将模拟量承载于数字信号上。
 
 带有标号 `(5)` 的是 **在线串行编程** （In-Circuit Serial Programming）接口，用于直接给微控制器编程。
 
@@ -151,10 +156,35 @@ Arduino 板是对于 ATmega/ARM 等系列芯片的再封装，加入了 USB 控�
 
 ### 2. 2  软件需求
 #### 电路设计
-TODO
+在我们的教程中，需要使用的电路都十分简单，以至于不需要事先设计就可以直接连接。但是在完成现实中的项目时，完整设计出电路就十分必要了。 **Fritzing** 是简单易用的电路设计软件，支持拖放式的设计环境，还支持在实物图、原理图和 PCB 板设计三种模式中切换。其资源库十分庞大，有各种扩展板、硬件、与开发板，是 Arduino 设计的得力助手。
+
+![Fritzing 图标](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/fritzing_icon.png)
+
+在本 Chat 中，我们将使用 Fritzing 作为电路绘图软件。
 
 #### 编程
-TODO
+
+* **Arduino IDE**
+
+![Arduino IDE](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_start.png)
+
+Arduino IDE 也许是最古老的专门用于 Arduino 的开发环境。 对于 Arduino 板的编程和代码烧录都可以快速完成。其强大的包管理器允许程序员快速安装不同版本的扩展库和不同的开发板。因为其使用读取关键字列表的方法实现代码高亮，其代码高亮几乎不占用 CPU 资源，再加上其一键编译、一键导入依赖头文件的功能，它是入门的最佳选择。
+
+主界面
+
+![Arduino IDE 主界面](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_intf.png)
+
+包管理器
+
+![Arduino IDE 包管理器](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_lib_mgr.png)
+
+* **PlatformIO + VSCode**
+
+![PlatformIO](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/platio_ico.png)
+
+PlatformIO 是一种基于 avr-gcc 和 python 的开发环境。它常与 VSCode 协同工作，能支持高级代码提示、远程调试、彩色串口显示、代码折叠、重构等高级工具。它也支持一键安装库、一键编译烧录等开发功能。这是一种现代的 Arduino 开发解决方案。
+
+在本 Chat 中，我们将使用 PlatformIO 作为开发环境。但要注意的是，能在 PlatformIO 中编译通过的代码，在 Arduino IDE 中一定能编译通过，因为两者都使用了相同的编译器工具链 avr-gcc 。
 
 ### 第2章参考资料
 1. *Arduino Forum*. "IOREF"[EB/OL]. (https://forum.arduino.cc/index.php?topic=472829.0), 访问日期 2019-08-21
@@ -170,7 +200,7 @@ TODO
 ### 3. 1  硬件设计
 在构建一个 Arduino 项目时，我们首先应该设计硬件。因为程序控制硬件，只有确定了硬件才能编写健壮的代码。我们可以将我们的目标分成几个小块。一般地，我们会将项目分成 **传感器** (Sensor) 、 **控制器** (Controller) 和 **效应器** (Actuator) 三部分。控制器从传感器处获得外界信息，经过逻辑运算后操纵效应器做出响应。这里的响应可以是打开一盏电灯、使蜂鸣器发声、显示一个字符串，甚至什么都不做。
 
-经过分析，我们发现该项目无需传感器，因为它并不需要获取外界信息。所以该项目至少需要以下硬件：
+由于该项目并不需要获取外界信息，所以其无需传感器。该项目至少需要以下硬件：
 
 * 1块 Arduino 板，作为控制器
 * 1个 LED 灯，颜色随意（建议用红色，醒目），作为执行器

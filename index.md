@@ -166,23 +166,25 @@ Arduino 板是对于 ATmega/ARM 等系列芯片的再封装，加入了 USB 控�
 
 * **Arduino IDE**
 
-![Arduino IDE](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_start.png)
+![Arduino IDE](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_start.PNG)
 
 Arduino IDE 也许是最古老的专门用于 Arduino 的开发环境。 对于 Arduino 板的编程和代码烧录都可以快速完成。其强大的包管理器允许程序员快速安装不同版本的扩展库和不同的开发板。因为其使用读取关键字列表的方法实现代码高亮，其代码高亮几乎不占用 CPU 资源，再加上其一键编译、一键导入依赖头文件的功能，它是入门的最佳选择。
 
 主界面
 
-![Arduino IDE 主界面](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_intf.png)
+![Arduino IDE 主界面](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_intf.PNG)
 
 包管理器
 
-![Arduino IDE 包管理器](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_lib_mgr.png)
+![Arduino IDE 包管理器](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/ard_ide_lib_mgr.PNG)
 
 * **PlatformIO + VSCode**
 
 ![PlatformIO](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/platio_ico.png)
 
 PlatformIO 是一种基于 avr-gcc 和 python 的开发环境。它常与 VSCode 协同工作，能支持高级代码提示、远程调试、彩色串口显示、代码折叠、重构等高级工具。它也支持一键安装库、一键编译烧录等开发功能。这是一种现代的 Arduino 开发解决方案。
+
+![PlatformIO 与 VSCode 界面](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/uno_intro/platformio-ide-laptop.png)
 
 在本 Chat 中，我们将使用 PlatformIO 作为开发环境。但要注意的是，能在 PlatformIO 中编译通过的代码，在 Arduino IDE 中一定能编译通过，因为两者都使用了相同的编译器工具链 avr-gcc 。
 

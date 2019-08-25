@@ -195,7 +195,8 @@ PlatformIO 是一种基于 avr-gcc 和 python 的开发环境。它常与 VSCode
 
 ## 第3章  快速上手：一个 Blink 项目
 ### 3. 0 导语
-在本章中，我们会构建一个简单的 Blink 项目，充当‘Hello World’的角色，该项目使一盏 LED 灯闪烁。在本章中，我们只对这个项目中出现的各项细节做粗略讲解，因为该章的主要目的是向读者介绍一个典型 Arduino 项目的开发周期及流程。这意味着完全可以跳过该章，但跟着该章的步伐构建 Blink 项目能让读者更好地体会什么是现实中的 Arduino 编程。
+在本章中，我们会“不求甚解”地构建一个简单的 Blink 项目，充当‘Hello World’的角色，该项目使一盏 LED 灯闪烁。在本章中，我们只对这个项目中出现的各项细节做粗略讲解，因为该章的主要目的是向读者介绍一个典型 Arduino 项目的开发周期及流程。这意味着完全可以跳过该章，但跟着该章的步伐构建 Blink 项目能让读者更好地体会什么是现实中的 Arduino 编程。
+在完成本章后，读者应该能体会什么是 Arduino 项目以及其基本设计流程。
 
 **项目目标：** 使一盏 LED 灯以固定间隔闪烁。
 
@@ -219,6 +220,7 @@ PlatformIO 是一种基于 avr-gcc 和 python 的开发环境。它常与 VSCode
 使用 Fritzing 绘制的电路图如下。
 
 ![实物图](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/blink_project/circuit_bb.png)
+
 ![原理图](https://raw.githubusercontent.com/CSharperMantle/arduino_intro/master/assets/blink_project/circuit_image.png)
 
 ### 3.2 软件设计
@@ -226,7 +228,7 @@ PlatformIO 是一种基于 avr-gcc 和 python 的开发环境。它常与 VSCode
 
 使一盏 LED 灯闪烁 => 使数字IO端口`2`以固定间隔输出 5V/0V => 脉冲输出
 
-于是，我们可以编写以下代码：
+使用 `PlatformIO 主页` 创建一个新项目，在其主程序文件 `main.c` 中编写以下代码（代码中的第一行是电子仓库中的文件路径，并非项目中的文件）：
 ```c
 // src/blink_project/sketch.c
 #include <Arduino.h>
@@ -256,14 +258,23 @@ void loop()
     delay(TIME_DELAY_MILLISEC);
 }
 ```
-将其编译上传，完成本项目制作。
+
+使用 `PlatformIO: Upload` 命令将其编译上传。将电路完整连接后，应该看到 LED 灯以 1 秒的间隔交替亮灭。
 
 ### 第三章参考资料
 1. *Wikipedia*. "Light-emitting diode"[DB/OL]. (https://en.wikipedia.org/wiki/Light-emitting_diode), 访问日期 2019-08-20
 
 ## 第4章 Arduino 编程基础
 ### 4.0 导语
-TODO
+我们已经完成了我们的第一个项目，但还不知道其中的原理。所以，本章内容是关于 Arduino 编程的基础内容。在讲解完成简单 Arduino 项目所需编程知识的同时，还会为没有 C/C++ 语言基础的读者讲解基础的 C/C++ 语言知识。已有基础的读者可以只关心那些不熟悉的内容。
+本章会涉及到的主题有：
+
+* Arduino Sketch 的基本结构
+* 数字量I/O
+* 模拟量读取
+* 使用串口与计算机通信
+
+绝大部分内容不需要复杂硬件的参与。如果不得不这样做，我们会保证详细讲解需要用的硬件结构。更详细的硬件设计、编程提高和综合应用将在之后的章节中涉及。同样，本章中的内容可能会在之后的章节中提到。在完成本章后，读者应该掌握了大多数基于 Arduino 的自动控制系统所涉及到的技术。
 
 ### Arduino 使用的 C++ 语言
 

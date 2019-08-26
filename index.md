@@ -228,9 +228,31 @@ PlatformIO 是一种基于 avr-gcc 和 python 的开发环境。它常与 VSCode
 
 使一盏 LED 灯闪烁 => 使数字IO端口`2`以固定间隔输出 5V/0V => 脉冲输出
 
-使用 `PlatformIO 主页` 创建一个新项目，在其主程序文件 `main.c` 中编写以下代码（代码中的第一行是电子仓库中的文件路径，并非项目中的文件）：
+首先，安装 VSCode 和 PlatformIO 插件。安装过程不在此赘述，请参见 [安装指南](https://platformio.org/install/ide?install=vscode) 。
+
+安装完成后，按 `Shift + Ctrl + P` 打开命令面板，使用 `PlatformIO: Home` 命令打开 PlatformIO 主页。点击左边的 `Platforms` 选项卡，选择 Arduino 平台安装。回到 Home ，点击 `New Project` 按钮，在弹出的窗口中输入项目名称（ `blink` ）、开发板类型、框架类型（Arduino）和路径。
+创建项目，进入项目目录。此时，目录下应该有以下文件夹结构：
+```plain
+<blink>
+    |
+    |- <.pio>
+    |- <.vscode>
+    |- <include>
+    |   |- README
+    |
+    |- <lib>
+    |   |- README
+    |
+    |- <src>
+    |- <test>
+    |   |- README
+    |
+    |- platformio.ini
+
+```
+在目录 `src` （源代码）中创建主程序文件 `main.c` 中键入以下代码：
 ```c
-// src/blink_project/sketch.c
+// src/blink_project/blink/src/main.c
 #include <Arduino.h>
 
 // 定义 LED 引脚
@@ -276,9 +298,7 @@ void loop()
 
 绝大部分内容不需要复杂硬件的参与。如果不得不这样做，我们会保证详细讲解需要用的硬件结构。更详细的硬件设计、编程提高和综合应用将在之后的章节中涉及。同样，本章中的内容可能会在之后的章节中提到。在完成本章后，读者应该掌握了大多数基于 Arduino 的自动控制系统所涉及到的技术。
 
-### 4. 1  Arduino 使用的 C++ 语言
-
-### 4. 2  Arduino Sketch
+### 4. 1  Arduino Sketch
 一段能被烧录到 Arduino 板上并被执行的代码称为 **Arduino Sketch** [1]。这样的代码我们已经看到过了。一个最小的 Arduino Sketch 包含以下内容：
 ```c
 // src/sketching/minimal_sketch.c
@@ -305,6 +325,10 @@ void loop(void);
 
 这两个函数构成了 Arduino 基本控制流。当 Arduino 板加电或重置时，将首先运行`setup()` 中的代码，**只运行一次**。编译器希望用户将 Arduino 板的初始化操作放在这里，这也是其取名为“setup” (设置) 的原因。它也可以被认为是入口点`main()`[2] -- 如果你学习过 C 或 C++ 之类语言的话。
 
+> **C/C++ 旁注：函数声明与调用**
+
+> 一般来说，
+
 `setup()` 返回之后，Arduino 板会**迭代地调用`loop()`**，直到断电或重置。如果你学习过 C 之类语言的话，该函数的执行路径类似于以下代码：
 ```c
 while (1) // 死循环
@@ -313,7 +337,7 @@ while (1) // 死循环
 }
 ```
 
-一般来说，我们只需要上述最小 Arduino Sketch 就可以完成大量工作。但是也可以有以下更高级的 Sketch，其支持使 Arduino 板在空闲与工作中切换,实现“软关机”。
+一般来说，我们只需要上述最小 Sketch 就可以完成大部分项目，但是也可以有以下更高级的 Sketch，其支持使 Arduino 板在空闲与工作中切换,实现“软关机”。
 ```c
 // src/sketching/shutdownable_sketch.c
 #include <Arduino.h>

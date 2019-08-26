@@ -28,3 +28,16 @@ bh_unicode_properties.cache
 # Sublime-github package stores a github token in this file
 # https://packagecontrol.io/packages/sublime-github
 GitHub.sublime-settings
+
+# VSCode items
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PlatformIO items
+.pioenvs
+.piolibdeps
+.clang_complete
+.gcc-flags.json
+.pio

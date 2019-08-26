@@ -30,7 +30,7 @@ bh_unicode_properties.cache
 GitHub.sublime-settings
 
 # VSCode items
-.vscode/*
+.vscode
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json

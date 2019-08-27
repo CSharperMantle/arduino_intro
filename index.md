@@ -99,7 +99,7 @@ Arduino 板是对于 ATmega/ARM 等系列芯片的再封装，加入了 USB 控�
 为了方便讨论，我们以 **Arduino/Genuino Uno Revision 3** 作为本 Chat 中默认使用的 Arduino 板，因为它是最简单、最适合初学者学习的 Arduino 板型号。 **如果没有特殊声明，本 Chat 之后所提到的 Arduino 板均指 Arduino/Genuino Uno Revision 3。**
 
 > **旁注：Arduino 和 Genuino**
-
+> <br />
 > 实际上， Arduino 和 Genuino 是指同一种产品---即 Arduino---的不同商标。这个差别源自2008年的一次纠纷。
 > 2008年上半年，Massimo Banzi，David Cuartielles，Tom Igoe，Gianluca Martino 和 David Mellis 创建了 Arduino LLC 公司，共同持有在美国注册的 Arduino 商标。但是在2008年末，Gianluca Martino 的公司在未告知其他四位创始人的情况下在意大利注册了 Arduino 商标。其他四位创始人发现后，他们试图说服 Gianluca 将商标权归还，但他们没有成功。Gianluca 的公司随后指派了一位新 CEO，分裂了 Arduino LLC，将新公司命名为 Arduino SRL。于是，Arduino LLC 只好将美国外的商标更名为 Genuino [5]。
 
@@ -133,9 +133,9 @@ Arduino 板是对于 ATmega/ARM 等系列芯片的再封装，加入了 USB 控�
 * `GND`：接地，被认为是 0V
 * `VIN`：直接向微控制器提供电压的接口，在有外接电源时也可以当 `5V` 接口使用
 
-带有标号 `(3)` 和 `ANALOG IN` 字样的是 **模拟量输入** （Analogue Input）区。这一区内的 `A0` 、 `A1` 、 `A2` 、 `A3` 、 `A4` 和 `A5` 都是 **模拟量输入端口** 。这些端口可以读取加在其上的 **电压值** （0V - `AREF` 值，一般为 5V），将其缩放至一个 `0` 至 `1023` 的整数中，作为该端口的模拟量。 在 `AREF` 为 5V 的情况下， **电压每增加 0.0049V ，模拟量值增加1** [2]。在这些端口中， `A4` 和 `A5` 有其特殊的作用。这两个端口可以做 `I2C/TWI` 总线使用[3]。有关这种总线的使用，我们将会之后详细讲解。
+带有标号 `(3)` 和 `ANALOG IN` 字样的是 **模拟量输入** （analogue input）区。这一区内的 `A0` 、 `A1` 、 `A2` 、 `A3` 、 `A4` 和 `A5` 都是 **模拟量输入端口** 。这些端口可以读取加在其上的 **电压值** （0V - `AREF` 值，一般为 5V），将其缩放至一个 `0` 至 `1023` 的整数中，作为该端口的模拟量。 在 `AREF` 为 5V 的情况下， **电压每增加 0.0049V ，模拟量值增加1** [2]。在这些端口中， `A4` 和 `A5` 有其特殊的作用。这两个端口可以做 `I2C/TWI` 总线使用[3]。有关这种总线的使用，我们将会之后详细讲解。
 
-带有标号 `(4)` 和 `DIGITAL` 字样的是 **数字I/O端口** （Digital I/O Pin）区。这一区内的 `0` - `13` 端口都称为 **数字口** ，因为它们可以输出 **高电平** （ `IOREF` 的值，通常为 5V，代表 1）和 **低电平** （0V，代表 0）。它们也可以作为输入端口使用，检测是否有电压加于其上。在为 Arduino 板编写的程序中，一般 **要显式地指定数字口的模式** ，即输入还是输出。图中该区域内英文标记含义如下：
+带有标号 `(4)` 和 `DIGITAL` 字样的是 **数字I/O端口** （digital I/O pin）区。这一区内的 `0` - `13` 端口都称为 **数字口** ，因为它们可以输出 **高电平** （ `IOREF` 的值，通常为 5V，代表 1）和 **低电平** （0V，代表 0）。它们也可以作为输入端口使用，检测是否有电压加于其上。在为 Arduino 板编写的程序中，一般 **要显式地指定数字口的模式** ，即输入还是输出。图中该区域内英文标记含义如下：
 
 * `TX0`：硬件 **串行端口** （Serial Port）的 **发送端** ，微控制器向串口写入的信息会出现在这里
 * `RX0`：硬件串行端口的 **接收端** ，电脑向串口写入的信息会出现在这里
@@ -144,9 +144,9 @@ Arduino 板是对于 ATmega/ARM 等系列芯片的再封装，加入了 USB 控�
 * `AREF`：意为 **模拟输入参考** （Analogue Input Reference），定义了当模拟值为 `1023` 时的电压值。该引脚的使用将在之后详细讲解。
 
 > **旁注：数字信号与模拟信号**
-
-> 我们能用身体感受到的大多数信号都是模拟信号，比如光亮度。当我们使用肉眼估测几盏灯的亮度时，我们会说“灯 A 很亮”，“灯 B 比较暗”。这就是模拟信号的样例。如果我们使用专业仪器测量，我们能得到类似于 320 勒克斯、 413.12 勒克斯等数值。我们将这样的值称为 **连续值** （Continuous Value），因为类似于 12.32134 、 255.2531 和 999.999 都是合法的值，并没有一个最小的单位。由这样的量组成的信号称为 **数字信号** （Analogue Signal）。
-> 相反的，当我们试图描述一盏灯是否点亮时，我们能给出的答案只有“是”和“否”两种。现实中并没有类似“灯 A 开了 92.423%”，“灯 B 关了 54.239%”这样的陈述。这样的值被称为 **离散值** （Discrete Value）。由这样的值组成的信号成为 **数字信号** （Digital Signal）。现代计算机理论上使用数字信号作为信息载体，但在实际计算机实现中，数字信号承载于模拟信号（电压）上。同时，也可以做到将模拟量承载于数字信号上。
+> <br />
+> 我们能用身体感受到的大多数信号都是模拟信号，比如光亮度。当我们使用肉眼估测几盏灯的亮度时，我们会说“灯 A 很亮”，“灯 B 比较暗”。这就是模拟信号的样例。如果我们使用专业仪器测量，我们能得到类似于 320 勒克斯、 413.12 勒克斯等数值。我们将这样的值称为 *连续值* （continuous value），因为类似于 12.32134 、 255.2531 和 999.999 都是合法的值，并没有一个最小的单位。由这样的量组成的信号称为 *数字信号* （analogue signal）。
+> 相反的，当我们试图描述一盏灯是否点亮时，我们能给出的答案只有“是”和“否”两种。现实中并没有类似“灯 A 开了 92.423%”，“灯 B 关了 54.239%”这样的陈述。这样的值被称为 *离散值* （discrete value）。由这样的值组成的信号成为 *数字信号* （digital signal）。现代计算机理论上使用数字信号作为信息载体，但在实际计算机实现中，数字信号承载于模拟信号（电压）上。同时，也可以做到将模拟量承载于数字信号上。
 
 带有标号 `(5)` 的是 **在线串行编程** （In-Circuit Serial Programming）接口，用于直接给微控制器编程。
 
@@ -201,7 +201,7 @@ PlatformIO 是一种基于 avr-gcc 和 python 的开发环境。它常与 VSCode
 **项目目标：** 使一盏 LED 灯以固定间隔闪烁。
 
 ### 3. 1  硬件设计
-在构建一个 Arduino 项目时，我们首先应该设计硬件。因为程序控制硬件，只有确定了硬件才能编写健壮的代码。我们可以将我们的目标分成几个小块。一般地，我们会将项目分成 **传感器** (Sensor) 、 **控制器** (Controller) 和 **效应器** (Actuator) 三部分。控制器从传感器处获得外界信息，经过逻辑运算后操纵效应器做出响应。这里的响应可以是打开一盏电灯、使蜂鸣器发声、显示一个字符串，甚至什么都不做。
+在构建一个 Arduino 项目时，我们首先应该设计硬件。因为程序控制硬件，只有确定了硬件才能编写健壮的代码。我们可以将我们的目标分成几个小块。一般地，我们会将项目分成 **传感器** (sensor) 、 **控制器** (controller) 和 **效应器** (actuator) 三部分。控制器从传感器处获得外界信息，经过逻辑运算后操纵效应器做出响应。这里的响应可以是打开一盏电灯、使蜂鸣器发声、显示一个字符串，甚至什么都不做。
 
 由于该项目并不需要获取外界信息，所以其无需传感器。该项目至少需要以下硬件：
 
@@ -230,8 +230,9 @@ PlatformIO 是一种基于 avr-gcc 和 python 的开发环境。它常与 VSCode
 
 首先，安装 VSCode 和 PlatformIO 插件。安装过程不在此赘述，请参见 [安装指南](https://platformio.org/install/ide?install=vscode) 。
 
-安装完成后，按 `Shift + Ctrl + P` 打开命令面板，使用 `PlatformIO: Home` 命令打开 PlatformIO 主页。点击左边的 `Platforms` 选项卡，选择 Arduino 平台安装。回到 Home ，点击 `New Project` 按钮，在弹出的窗口中输入项目名称（ `blink` ）、开发板类型、框架类型（Arduino）和路径。
-创建项目，进入项目目录。此时，目录下应该有以下文件夹结构：
+安装完成后，按 `Shift + Ctrl + P` 打开命令面板，使用 `PlatformIO: Home` 命令打开 PlatformIO 主页。点击左边的 `Platforms` 页面，在 `Embedded` 页面中选择 Arduino 平台安装。回到 `Home` ，点击 `New Project` 按钮，在弹出的窗口中输入项目名称（ `blink` ）、开发板类型（Arduino Uno）、框架类型（Arduino）和路径。
+
+等待创建项目，进入项目目录。此时，目录下应该有以下文件夹结构：
 ```plain
 <blink>
     |
@@ -281,7 +282,29 @@ void loop()
 }
 ```
 
-使用 `PlatformIO: Upload` 命令将其编译上传。将电路完整连接后，应该看到 LED 灯以 1 秒的间隔交替亮灭。
+使用 `PlatformIO: Build` 命令编译项目。正常情况下，应该看到如下输出：
+```plain
+> Executing task: platformio.exe run <
+
+Processing uno (platform: atmelavr; board: uno; framework: arduino)
+-------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/atmelavr/uno.html       
+PLATFORM: Atmel AVR 1.15.0 > Arduino Uno
+HARDWARE: ATMEGA328P 16MHz, 2KB RAM, 31.50KB Flash
+... 省略一部分输出 ...
+Linking .pio\build\uno\firmware.elf
+Checking size .pio\build\uno\firmware.elf
+Memory Usage -> http://bit.ly/pio-memory-usage
+DATA:    [          ]   0.4% (used 9 bytes from 2048 bytes)
+PROGRAM: [          ]   2.9% (used 936 bytes from 32256 bytes)
+Building .pio\build\uno\firmware.hex
+====================================== [SUCCESS] Took 7.41 seconds ====================================== 
+
+Terminal will be reused by tasks, press any key to close it.
+```
+
+将 Arduino 板连接至电脑，使用 `PlatformIO: Upload` 上传。将电路完整连接后，应该看到 LED 灯以 1 秒的间隔交替亮灭。
 
 ### 第3章参考资料
 1. *Wikipedia*. "Light-emitting diode"[DB/OL]. (https://en.wikipedia.org/wiki/Light-emitting_diode), 访问日期 2019-08-20
@@ -292,8 +315,9 @@ void loop()
 本章会涉及到的主题有：
 
 * Arduino Sketch 的基本结构
-* 数字量I/O
+* 数字量 I/O
 * 模拟量读取
+* 基本控制流
 * 使用串口与计算机通信
 
 绝大部分内容不需要复杂硬件的参与。如果不得不这样做，我们会保证详细讲解需要用的硬件结构。更详细的硬件设计、编程提高和综合应用将在之后的章节中涉及。同样，本章中的内容可能会在之后的章节中提到。在完成本章后，读者应该掌握了大多数基于 Arduino 的自动控制系统所涉及到的技术。
@@ -326,8 +350,39 @@ void loop(void);
 这两个函数构成了 Arduino 基本控制流。当 Arduino 板加电或重置时，将首先运行`setup()` 中的代码，**只运行一次**。编译器希望用户将 Arduino 板的初始化操作放在这里，这也是其取名为“setup” (设置) 的原因。它也可以被认为是入口点`main()`[2] -- 如果你学习过 C 或 C++ 之类语言的话。
 
 > **C/C++ 旁注：函数声明与调用**
-
-> 一般来说，
+> <br />
+> 函数是 C/C++ 中的一段可执行代码。函数是一种最常见的编程结构。你可能还听说过“过程”、“方法”、“子例程”等等名字，但在 C/C++ 中。它们统称函数（类中的函数除外——它们被称为方法，暂且按下不表）。
+> 函数可以被分成 *声明* （declaration）和 *实现/定义* （definition）两部分。声明向编译器表示“有这个方法”，只包含该方法的 *签名* （signature），但可以不加入具体代码。例如，一个函数的声明按照以下规则：
+>
+```plain
+return_value_type fun_name(arg_list);
+```
+> 假设我们有一个加法函数，则可以编写以下：
+> 
+```c
+int add_two_num(int x, int y);
+```
+> 或者不带形参名，如
+>
+```c
+int add_two_num(int, int);
+```
+> 函数的实现必须包括函数体。如：
+>
+```c
+int add_two_num(int x, int y)
+{
+    return x + y;
+}
+```
+> 声明和实现可以分散在不同文件里，编译器会自动匹配。
+> <br />
+> 当调用一个函数时，只需遵循以下规则：
+>
+```plain
+return_value_type return_value = fun_name(arg_list);
+```
+> 其中，可以不将返回值赋给一个变量。当返回值类型为 `void` （无返回值）时，不能将其赋给变量。
 
 `setup()` 返回之后，Arduino 板会**迭代地调用`loop()`**，直到断电或重置。如果你学习过 C 之类语言的话，该函数的执行路径类似于以下代码：
 ```c
@@ -371,6 +426,49 @@ void loop()
 ```
 
 在上述 Sketch 中，当用户将`isShutdownRequested`设为`true`时，即可进入空闲状态(死循环)，直到将`isStartupRequested`置为`true`， Arduino 板再次调用`setup()`初始化，退出死循环。
+
+### 4. 2  与电脑交互：串行端口
+在构建第一个项目的时候，我们并没有试图让 Arduino 板与电脑交互。如果我们想让 Arduino 向我们发送一些信息该如何操作？这种情况经常出现，尤其在调试时（Arduino 没有自带调试器）。一种可能的解法是使用不同的指示灯，但这并不方便。如果指示灯太多，我们很难记住每个的含义，并且像数字这样的信息并不能很好地使用指示灯表现出来。
+
+幸运的是， Arduino 向我们提供了一个优美的解决方案。 Arduino 是基于在 USB 上模拟 **串行端口**（serial port）实现的。在没有向 Arduino 板烧录程序时，串口一直是空闲的。为了节约资源， Arduino 开发人员发明了通过串口与电脑进行双向通信的方法。在代码中，串口是以一个 **C++ 类** 来实现的。该类的定义如下：
+```cpp
+// HardwareSerial.h
+
+class HardwareSerial : public Stream
+{
+    // Chat author comment: some members omitted
+public:
+    inline HardwareSerial(
+      volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
+      volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
+      volatile uint8_t *ucsrc, volatile uint8_t *udr);
+    void begin(unsigned long baud) { begin(baud, SERIAL_8N1); }
+    void begin(unsigned long, uint8_t);
+    void end();
+    virtual int available(void);
+    virtual int peek(void);
+    virtual int read(void);
+    virtual int availableForWrite(void);
+    virtual void flush(void);
+    virtual size_t write(uint8_t);
+    inline size_t write(unsigned long n) { return write((uint8_t)n); }
+    inline size_t write(long n) { return write((uint8_t)n); }
+    inline size_t write(unsigned int n) { return write((uint8_t)n); }
+    inline size_t write(int n) { return write((uint8_t)n); }
+    using Print::write; // pull in write(str) and write(buf, size) from Print
+    operator bool() { return true; }
+};
+
+// Chat author comment: some checks omitted
+extern HardwareSerial Serial;
+```
+在代码最后一句中，我们可以看到， Arduino 标准库已经帮我们创建好了一个 **硬件串口** （hardware serial）。这大大简化了用户的工作。我们只需要调用该类其中的几个 **方法** 便可以使用串口。
+
+首先，在所有操作前，串口首先应该被 **开启** （open）。方法 `begin()` 提供了开启串口的简便方法。该方法的签名如下：
+```cpp
+void HardwareSerial::begin(unsigned long baud);
+```
+我们只需要提供该串口的 **波特率** （baud rate）即可。波特率表示串口单位时间内收发数据的量，发送方和接收方必须使用相同波特率才能正常收发信息。
 
 ### 第4章参考资料
 1. "Programming Arduino Getting Started with Sketches"[M]. 美国:McGraw-Hills教育, 2011.
